@@ -1,18 +1,47 @@
 
-import alarm_puzzle
+class alarm_puzzle:
+    display = []
+    correct = 0
+    solved = False
 
-if __name__ == '__main__':
-    ap = alarm_puzzle.alarm_puzzle()
-    ap.push_button(4)
-    ap.push_button(1)
-    ap.push_button(2)
-    ap.push_button(3)
+    def __init__(self):
+        self.generate_puzzle()
 
-    print(ap.solved)
+    def is_solved(self):
+        return self.solved
+
+    def generate_puzzle(self):
+        self.display = [4,7,9,8]
+        #print[self.display]
+
+    def is_correct(self, button_number):
+
+        return False
+
+    def input(self):
+        value = input("Enter botton:")
+        print(value)
+
+    def push_button(self, button_number):
+
+        i = button_number
+
+        if 0 < i < 5:
+        #if self.is_correct(button_number):
+            self.correct += 1
+        else:
+            self.correct = 0
+        self.solved = self.correct == 4
+
+        return self.solved
 
 
+
+   
 
 """
+# code modified, tweaked and tailored from code by bertwert
+# on RPi forum thread topic 91796
 import RPi.GPIO as GPIO
 import time
 
@@ -63,4 +92,6 @@ try:
 finally:
     GPIO.cleanup()
 """
+
+
 
