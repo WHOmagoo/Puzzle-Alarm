@@ -118,9 +118,9 @@ class SevenSegDrive:
 
             self.set_cur_digit_output(i)
             self.render_single_number(self.display[i])
-            time.sleep(.5)
+            time.sleep(.0001)
             self.off()
-            time.sleep(.5)
+            time.sleep(.0003)
 
 
     def notify(self, sender):
