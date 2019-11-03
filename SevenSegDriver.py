@@ -105,6 +105,7 @@ class SevenSegDrive:
 
     def off(self):
         for index, value in enumerate(self.status):
+            print(index)
             if value is True:
                 self.gpio_order[index].off()
 
