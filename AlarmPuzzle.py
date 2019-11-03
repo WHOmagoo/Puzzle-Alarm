@@ -42,7 +42,7 @@ class alarm_puzzle:
         return indexes.pop()
 
     def is_correct(self, button_pushed):
-        return self.get_nth_lowest_index(self.correct + 1) == button_pushed
+        return self.get_nth_lowest_index(self.correct + 1) == button_pushed - 1
 
     def input(self, button_pushed):
         correct = self.is_correct(button_pushed)
