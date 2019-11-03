@@ -82,6 +82,12 @@ class SevenSegDrive:
     def set_display(self, new_display):
         self.display = new_display
 
+    def enable_seperator(self):
+        self.status[8] = True
+
+    def disable_seperator(self):
+        self.status[8] = False
+
     def set_cur_digit_output(self, new_digit):
         if self.cur_digit != new_digit:
             self.digit_status[self.cur_digit] = False
@@ -89,6 +95,12 @@ class SevenSegDrive:
             self.digit_status[new_digit] = True
             self.digits[new_digit].off()
             self.cur_digit = new_digit
+
+        if self.digit_status[1] is True:
+            self.enable_seperator()
+        else:
+            self.disable_seperator()
+
 
 
     def off(self):
@@ -112,7 +124,7 @@ class SevenSegDrive:
             self.render_single_number(self.display[i])
             time.sleep(.0001)
             self.off()
-            time.sleep(.0004)
+            time.sleep(.0003)
 
 
     def notify(self, sender):
