@@ -9,6 +9,7 @@ import datetime
 import AlarmActions
 from threading import Thread
 from Buzzer import Buzzer
+import time
 
 
 class Buttons:
@@ -71,6 +72,8 @@ class Buttons:
 
     def poll_buttons(self):
         while True:
+            time.sleep(.1)
+
             if self.mode == "alarm":
                 print("In alamr")
                 if self.sound.off:
