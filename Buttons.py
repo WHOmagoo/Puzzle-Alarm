@@ -5,7 +5,7 @@ import Time
 import TimeToArray
 import Alarm
 import alarm_puzzle
-
+import datetime
 
 class Buttons:
     # button 4
@@ -33,11 +33,13 @@ class Buttons:
         self.screen = SevenSegDriver.SevenSegDrive(TimeToArray.time_to_array(cur_time.get_time()))
 
         cur_time.subscribe_to_time_change(self.screen)
-        cur_time.get_time().time().minute += 1
 
-        print("Alarm for ", cur_time.get_time().time())
+        cur_time_e = cur_time.get_time().time()
+        alarm_time = datetime.time(cur_time_e.hour, cur_time_e.minute, 0)
 
-        self.alarm = Alarm.Alarm(cur_time)
+        print("Alarm for ", alarm_time)
+
+        self.alarm = Alarm.Alarm(alarm_time)
         self.alarm_puzzle = alarm_puzzle.alarm_puzzle()
 
         self.alarm.subscribe(alarm_puzzle)
