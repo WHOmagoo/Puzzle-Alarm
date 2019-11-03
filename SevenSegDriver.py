@@ -26,10 +26,10 @@ top_left = LED(22)
 top_right = LED(4)
 
 #pin 1
-bottom_left = LED(8)
+bottom_left = LED(16)
 
 #pin 4
-bottom_right = LED(16)
+bottom_right = LED(8)
 
 #pin 2
 bottom = LED(12)
