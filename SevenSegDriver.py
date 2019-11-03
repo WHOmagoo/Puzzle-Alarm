@@ -163,5 +163,6 @@ class SevenSegDrive:
 
 
     def set_mode(self, mode, alarm_puzzle):
+        print("Screen in ", mode)
         self.mode = mode,
         self.alarm = alarm_puzzle
