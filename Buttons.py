@@ -35,6 +35,8 @@ class Buttons:
         cur_time.subscribe_to_time_change(self.screen)
         cur_time.get_time().time().minute += 1
 
+        print("Alarm for ", cur_time.get_time().time())
+
         self.alarm = Alarm.Alarm(cur_time)
         self.alarm_puzzle = alarm_puzzle.alarm_puzzle()
 
