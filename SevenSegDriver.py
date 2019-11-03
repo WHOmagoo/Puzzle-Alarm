@@ -120,7 +120,7 @@ class SevenSegDrive:
             self.render_single_number(self.display[i])
             time.sleep(.001)
             self.off()
-            time.sleep(.0005)
+            time.sleep(.0001)
 
 
     def notify(self, sender):
