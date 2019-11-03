@@ -1,26 +1,29 @@
 # 172.23.20.210
-from gpiozero import LED
+# from gpiozero.pins.rpigpio import RPiGPIOFactory
+from gpiozero import LED, Device
+
+# factory = Device.pin_factory()
 
 # pin 12
-first_activator = LED(4)
+first_activator = LED(11)
 
 # pin 9
-second_activator = LED(22)
+second_activator = LED(27)
 
 # pin 8
-third_activator = LED(10)
+third_activator = LED(17)
 
 # pin 6
 fourth_activator = LED(24)
 
 # pin 11
-top_seg = LED(17)
+top_seg = LED(10)
 
 #pin 10
-top_left = LED(27)
+top_left = LED(22)
 
 #pin 7
-top_right = LED(9)
+top_right = LED(4)
 
 #pin 1
 bottom_left = LED(16)
