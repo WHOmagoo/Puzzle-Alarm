@@ -9,19 +9,6 @@ import alarm_puzzle
 import Buttons
 
 if __name__ == '__main__':
-    print("Hello, world")
-
-    while True:
-        if Buttons.button1.is_pressed:
-            print(1)
-        if Buttons.button2.is_pressed:
-            print(2)
-        if Buttons.button3.is_pressed:
-            print(3)
-        if Buttons.button4.is_pressed:
-            print(4)
-
-
     # cur_time = Time.Time()
     # alarm_time = cur_time.get_time()
     #
