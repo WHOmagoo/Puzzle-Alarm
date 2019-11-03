@@ -55,6 +55,8 @@ def test_gpio_connections():
 
 def test_number_display():
     s.first_activator.on()
+    s.second_activator.on()
+    s.third_activator.on()
     while True:
         for i in range(10):
             s.render(i)
