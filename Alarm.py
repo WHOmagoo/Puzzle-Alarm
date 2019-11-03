@@ -24,6 +24,7 @@ class Alarm:
         self.disarmed = disarmed
 
     def notify(self, time):
+        print("Notified")
         if self.willRing and time.time_is(self.alarm_time):
             print("Alarm time!")
             for observer in self.subscribers:

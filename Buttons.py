@@ -40,10 +40,10 @@ class Buttons:
         print("Alarm for ", alarm_time)
 
         self.alarm = Alarm.Alarm(alarm_time)
+        self.alarm.willRing = True
 
         self.alarm_puzzle = alarm_puzzle.alarm_puzzle()
 
-        self.alarm.subscribe(alarm_puzzle)
         cur_time.subscribe_to_time_change(self.alarm)
 
         self.mode = "view"
