@@ -56,7 +56,7 @@ class Buttons:
 
     def notify(self, alarm):
         self.mode = "alarm"
-        self.screen.set_mode("alarm", alarm_puzzle)
+        self.screen.set_mode("alarm", self.alarm_puzzle)
 
 
     def poll_buttons(self):
