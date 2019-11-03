@@ -55,9 +55,13 @@ seven = [True, False, True, False, False, True, False, False]
 eight = [True, True, True, True, True, True, True, True]
 nine = [True, True, True, True, False, True, False, False]
 
+numbers = [zero, one, two, three, four, five, six, seven, eight, nine]
+
 def render(number):
+    newState = numbers[number]
+
     for i in len(gpio_order):
-        if status[i] != number[i]:
+        if status[i] != newState[i]:
             status[i] = not status[i]
             gpio_order[i].toggle()
 
