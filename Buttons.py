@@ -28,6 +28,8 @@ class Buttons:
     prev_pushed = -1
     screen = None
 
+    alarm_puzzle = None
+
     def __init__(self):
         cur_time = Time.Time()
 
@@ -54,7 +56,7 @@ class Buttons:
 
     def notify(self, alarm):
         self.mode = "alarm"
-        self.screen.mode = "alarm"
+        self.screen.set_mode("alarm", alarm_puzzle)
 
 
     def poll_buttons(self):

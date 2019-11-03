@@ -159,6 +159,6 @@ class SevenSegDrive:
             self.disable_seperator()
 
 
-    def mode(self, mode, alarm_puzzle):
+    def set_mode(self, mode, alarm_puzzle):
         self.mode = mode,
         self.alarm = alarm_puzzle
