@@ -49,7 +49,7 @@ class SevenSegDrive:
 
     gpio_order = [top_seg, top_left, top_right, center_seg, bottom_left, bottom_right, bottom_seg, seperator]
 
-    status = [False,False,False,False,False,False,False,False]
+    status = [False,False,False,False,False,False,False,False, False]
 
     digit_status = [True, False, False, False]
     digits = [first_activator, second_activator, third_activator, fourth_activator]
