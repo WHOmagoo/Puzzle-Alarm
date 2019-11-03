@@ -1,5 +1,5 @@
 import datetime
-from threading import Thread
+import time
 
 class Time:
     cur_time = 0
@@ -34,7 +34,7 @@ class Time:
 
             self.cur_time = new_time
 
-            Thread.sleep(.5)
+            time.sleep(.5)
 
 
 
