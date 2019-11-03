@@ -165,5 +165,5 @@ class SevenSegDrive:
         print("Screen in<", mode, ">")
         time.sleep(1)
 
-        self.mode = mode,
+        self.mode = mode
         self.alarm = alarm_puzzle
