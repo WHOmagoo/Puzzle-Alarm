@@ -61,10 +61,8 @@ class alarm_puzzle:
     def push_button(self, button_number):
 
         i = button_number
-
-        if 0 < i < 5:
-            if self.is_correct(button_number):
-                self.correct += 1
+        if self.is_correct(button_number):
+            self.correct += 1
         else:
             self.correct = 0
             self.generate_puzzle()
