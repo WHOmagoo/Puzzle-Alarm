@@ -96,9 +96,9 @@ class SevenSegDrive:
             self.digits[new_digit].off()
             self.cur_digit = new_digit
 
-        if self.digit_status[1] is True:
+        if new_digit is 1:
             self.enable_seperator()
-        else:
+        elif new_digit is 2:
             self.disable_seperator()
 
 
