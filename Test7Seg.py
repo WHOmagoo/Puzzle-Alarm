@@ -52,6 +52,12 @@ def test_gpio_connections():
         test_on(i+1)
         test_all_segments()
 
+def test_panel_render():
+    s.set_display([1,4,5,7])
+    while True:
+        s.render_display()
+
+
 
 def test_number_display():
     s.first_activator.on()
@@ -59,10 +65,11 @@ def test_number_display():
     s.third_activator.on()
     while True:
         for i in range(10):
-            s.render(i)
+            s.render_single_number(i)
             time.sleep(.75)
 
 
 if __name__ == '__main__':
     # test_gpio_connections()
-    test_number_display()
+    # test_number_display()
+    test_panel_render()
