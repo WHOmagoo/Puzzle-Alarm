@@ -6,6 +6,7 @@ import TimeToArray
 import Alarm
 import alarm_puzzle
 import datetime
+import AlarmActions
 
 class Buttons:
     # button 4
@@ -43,6 +44,8 @@ class Buttons:
         self.alarm.willRing = True
 
         self.alarm_puzzle = alarm_puzzle.alarm_puzzle()
+
+        self.alarm.subscribe(self)
 
         cur_time.subscribe_to_time_change(self.alarm)
 
