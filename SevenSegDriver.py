@@ -112,7 +112,7 @@ class SevenSegDrive:
             self.render_display()
 
     def render_display(self):
-        for i in [0,3,2,4]:
+        for i in [0,1,2,3]:
             if i == 0 and self.display[i] == 0:
                 continue
 
