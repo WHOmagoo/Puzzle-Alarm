@@ -64,16 +64,16 @@ class Buttons:
         if self.mode is "alarm":
             self.screen.mode("alarm", alarm_puzzle)
 
-            if self.button1.is_active and self.prev_pushed != 1:
+            if self.button1.is_pressed and self.prev_pushed != 1:
                 self.alarm_puzzle.push_button(1)
                 self.prev_pushed = 1
-            elif self.button2.is_active and self.prev_pushed != 2:
+            elif self.button2.is_pressed and self.prev_pushed != 2:
                 self.alarm_puzzle.push_button(2)
                 self.prev_pushed = 2
-            elif self.button3.is_active and self.prev_pushed != 3:
+            elif self.button3.is_pressed and self.prev_pushed != 3:
                 self.alarm_puzzle.push_button(3)
                 self.prev_pushed = 3
-            elif self.button4.is_active and self.prev_pushed != 4:
+            elif self.button4.is_pressed and self.prev_pushed != 4:
                 self.alarm_puzzle.push_button(4)
                 self.prev_pushed = 4
             else:
@@ -85,11 +85,11 @@ class Buttons:
 
 
         if self.mode is "view":
-            if not (self.button1.is_active and self.button2.is_active):
-                if self.button1.is_active:
+            if not (self.button1.is_pressed and self.button2.is_pressed):
+                if self.button1.is_pressed:
                     self.mode = "change_time"
 
-                if self.button2.is_active:
+                if self.button2.is_pressed:
                     self.mode = "change_alarm"
 
 
