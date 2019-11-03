@@ -44,7 +44,7 @@ class Buttons:
         cur_time.subscribe_to_time_change(self.screen)
 
         cur_time_e = cur_time.get_time().time()
-        alarm_time = datetime.time(cur_time_e.hour, cur_time_e.minute + 1, 0)
+        alarm_time = datetime.time(cur_time_e.hour, (cur_time_e.minute + 1) % 60, 0)
 
         print("Alarm for ", alarm_time)
 
