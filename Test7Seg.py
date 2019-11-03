@@ -54,10 +54,11 @@ def test_gpio_connections():
 
 
 def test_number_display():
+    s.first_activator.off()
     while True:
         for i in range(10):
             s.render(i)
-            time.sleep(.5)
+            time.sleep(.75)
 
 
 if __name__ == '__main__':
