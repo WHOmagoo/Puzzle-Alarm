@@ -133,7 +133,7 @@ class SevenSegDrive:
             for i in [0,1,2,3]:
                 self.set_cur_digit_output(i)
 
-                nums = self.alarm.get_nums()
+                nums = self.alarm.get_display()
 
                 self.render_single_number(nums[i])
                 time.sleep(.00004)

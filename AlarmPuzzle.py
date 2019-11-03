@@ -72,9 +72,3 @@ class alarm_puzzle:
         self.solved = self.correct == 4
 
         return self.solved
-
-    def get_nums(self):
-        return self.display
-
-
-
