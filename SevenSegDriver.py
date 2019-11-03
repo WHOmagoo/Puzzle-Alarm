@@ -75,6 +75,8 @@ class SevenSegDrive:
 
     mode = "view"
 
+    alarm = None
+
     def __init__(self, time):
         self.set_display(time)
         self.thread = Thread(target=self.render_forever)
