@@ -132,7 +132,10 @@ class SevenSegDrive:
         elif self.mode == "alarm":
             for i in [0,1,2,3]:
                 self.set_cur_digit_output(i)
-                self.render_single_number(self.alarm.get_nums()[i])
+
+                nums = self.alarm.get_nums()
+
+                self.render_single_number(nums[i])
                 time.sleep(.00004)
                 self.off()
                 time.sleep(.0002)
@@ -162,8 +165,5 @@ class SevenSegDrive:
 
 
     def set_mode(self, mode, alarm_puzzle):
-        print("Screen in<", mode, ">")
-        time.sleep(1)
-
         self.mode = mode
         self.alarm = alarm_puzzle

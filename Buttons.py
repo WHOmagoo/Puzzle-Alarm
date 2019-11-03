@@ -75,7 +75,6 @@ class Buttons:
             time.sleep(.1)
 
             if self.mode == "alarm":
-                print("In alamr")
                 if self.sound.sound is True:
                     self.sound.start()
 
