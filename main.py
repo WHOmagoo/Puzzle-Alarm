@@ -14,7 +14,7 @@ import Buttons
 if __name__ == '__main__':
     cur_time = Time.Time()
 
-    screen = SevenSegDriver.SevenSegDrive(TimeToArray.time_to_array(cur_time))
+    screen = SevenSegDriver.SevenSegDrive(TimeToArray.time_to_array(cur_time.get_time()))
 
     cur_time.subscribe_to_time_change(screen)
 
