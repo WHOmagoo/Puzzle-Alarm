@@ -94,7 +94,7 @@ class SevenSegDrive:
             self.render_single_number(self.display[i])
             time.sleep(.008)
             self.off()
-            time.sleep(.002)
+            time.sleep(.0008)
 
 
 
