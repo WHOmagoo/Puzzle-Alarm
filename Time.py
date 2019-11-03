@@ -27,12 +27,14 @@ class Time:
     def monitor_time(self):
         while True:
             new_time = datetime.datetime.now()
-            if self.cur_time.time().second != new_time.time().second:
+            if self.cur_time.time().minute != new_time.time().minute:
                 self.cur_time = new_time
                 for item in self.toNotify:
                     item.notify(self)
 
             self.cur_time = new_time
+
+            Thread.sleep(.5)
 
 
 
