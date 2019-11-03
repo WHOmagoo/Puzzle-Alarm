@@ -83,10 +83,10 @@ class SevenSegDrive:
         self.display = new_display
 
     def enable_seperator(self):
-        self.status[7] = True
+        self.seperator.on()
 
     def disable_seperator(self):
-        self.status[7] = False
+        self.seperator.off()
 
     def set_cur_digit_output(self, new_digit):
         if self.cur_digit != new_digit:
