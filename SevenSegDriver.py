@@ -116,7 +116,7 @@ class SevenSegDrive:
 
 
     def notify(self, sender):
-        newTime = TimeToArray.time_to_array(sender.get_time())
+        newTime = TimeToArray.time_to_array(sender.get_time().time())
         self.set_display(self, newTime)
 
     def render_single_number(self, number):
