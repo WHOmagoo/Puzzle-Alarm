@@ -7,7 +7,7 @@ import time
 class SevenSegDrive:
     # pin 12
     first_activator = LED(11)
-    first_activator.on()
+    first_activator.off()
 
     # pin 9
     second_activator = LED(27)
@@ -49,7 +49,7 @@ class SevenSegDrive:
 
     status = [False,False,False,False,False,False,False,False]
 
-    digit_status = [False, True, True, True]
+    digit_status = [True, False, False, False]
     digits = [first_activator, second_activator, third_activator, fourth_activator]
 
     zero = [True, True, True, False, True, True, True, False]
@@ -73,11 +73,12 @@ class SevenSegDrive:
         self.display = new_display
 
     def set_cur_digit_output(self, new_digit):
-        self.digit_status[self.cur_digit] = False
-        self.digits[self.cur_digit].toggle()
-        self.digit_status[new_digit] = True
-        self.digits[new_digit].toggle()
-        self.cur_digit = new_digit
+        if self.cur_digit != new_digit:
+            self.digit_status[self.cur_digit] = False
+            self.digits[self.cur_digit].off()
+            self.digit_status[new_digit] = True
+            self.digits[new_digit].on()
+            self.cur_digit = new_digit
 
 
     def off(self):
