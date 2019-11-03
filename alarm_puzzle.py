@@ -1,3 +1,4 @@
+import random
 
 class alarm_puzzle:
     display = []
@@ -11,16 +12,51 @@ class alarm_puzzle:
         return self.solved
 
     def generate_puzzle(self):
-        self.display = [4,7,9,8]
-        #print[self.display]
+        self.correct = 0
+        self.display = []
+        for i in range(4):
+            new_rand = random.randint(0, 9 - i)
+            while new_rand in self.display:
+                new_rand += 1
 
-    def is_correct(self, button_number):
+            self.display.append(new_rand)
 
-        return False
+    def get_display(self):
+        return self.display
 
-    def input(self):
-        value = input("Enter botton:")
-        print(value)
+    def get_nth_lowest_index(self, n):
+
+        indexes = []
+        for i in range(n):
+            low_index = -1
+            low_val = 10
+            for j in range(4):
+                if j in indexes:
+                    continue
+                if self.display[j] < low_val:
+                    low_index = j
+                    low_val = self.display[j]
+
+            indexes.append(low_index)
+
+        return indexes.pop()
+
+
+
+    def is_correct(self, button_pushed):
+        return self.get_nth_lowest_index(self.correct + 1) == button_pushed
+
+
+    def input(self, button_pushed):
+        correct = self.is_correct(button_pushed)
+
+        if not correct:
+            print(button_pushed, " was wrong should have been ", self.get_nth_lowest_index(self.correct + 1))
+            self.generate_puzzle()
+        else:
+            self.correct += 1
+            if self.correct >= 4:
+                self.solved = True
 
     def push_button(self, button_number):
 
@@ -34,64 +70,6 @@ class alarm_puzzle:
         self.solved = self.correct == 4
 
         return self.solved
-
-
-
-   
-
-"""
-# code modified, tweaked and tailored from code by bertwert
-# on RPi forum thread topic 91796
-import RPi.GPIO as GPIO
-import time
-
-GPIO.setmode(GPIO.BCM)
-
-# GPIO ports for the 7seg pins
-segments = (11, 4, 23, 8, 7, 10, 18, 25)
-# 7seg_segment_pins (11,7,4,2,1,10,5,3) +  100R inline
-
-for segment in segments:
-    GPIO.setup(segment, GPIO.OUT)
-    GPIO.output(segment, 0)
-
-# GPIO ports for the digit 0-3 pins
-digits = (22, 27, 17, 24)
-# 7seg_digit_pins (12,9,8,6) digits 0-3 respectively
-
-for digit in digits:
-    GPIO.setup(digit, GPIO.OUT)
-    GPIO.output(digit, 1)
-
-num = {' ': (0, 0, 0, 0, 0, 0, 0),
-       '0': (1, 1, 1, 1, 1, 1, 0),
-       '1': (0, 1, 1, 0, 0, 0, 0),
-       '2': (1, 1, 0, 1, 1, 0, 1),
-       '3': (1, 1, 1, 1, 0, 0, 1),
-       '4': (0, 1, 1, 0, 0, 1, 1),
-       '5': (1, 0, 1, 1, 0, 1, 1),
-       '6': (1, 0, 1, 1, 1, 1, 1),
-       '7': (1, 1, 1, 0, 0, 0, 0),
-       '8': (1, 1, 1, 1, 1, 1, 1),
-       '9': (1, 1, 1, 1, 0, 1, 1)}
-
-try:
-    while True:
-        n = time.ctime()[11:13] + time.ctime()[14:16]
-        s = str(n).rjust(4)
-        for digit in range(4):
-            for loop in range(0, 7):
-                GPIO.output(segments[loop], num[s[digit]][loop])
-                if (int(time.ctime()[18:19]) % 2 == 0) and (digit == 1):
-                    GPIO.output(25, 1)
-                else:
-                    GPIO.output(25, 0)
-            GPIO.output(digits[digit], 0)
-            time.sleep(0.001)
-            GPIO.output(digits[digit], 1)
-finally:
-    GPIO.cleanup()
-"""
 
 
 

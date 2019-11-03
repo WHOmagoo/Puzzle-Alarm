@@ -1,6 +1,7 @@
 class Alarm:
     alarm_time = None
     subscribers = []
+    disarmed = False
 
 
 
@@ -13,6 +14,12 @@ class Alarm:
 
     def unsubscribe(self, observer):
         self.subscribers.remove(observer)
+
+    def is_disarmed(self):
+        return self.disarmed
+
+    def set_disarmed(self, disarmed):
+        self.disarmed = disarmed
 
     def notify(self, time):
         if time.time_is(self.alarm_time):

@@ -4,6 +4,7 @@ import Alarm
 import Time
 import AlarmActions
 import datetime
+import alarm_puzzle
 
 if __name__ == '__main__':
     print("Hello, world")
@@ -21,6 +22,6 @@ if __name__ == '__main__':
 
     alarm.subscribe(alarmResult)
 
-    while True:
+    while not alarm.disarmed:
         print("waiting", cur_time.get_time().second)
         time.sleep(5)
