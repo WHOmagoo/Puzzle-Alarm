@@ -22,10 +22,10 @@ def test_all_segments():
     s.top_seg.off()
     s.top_left.off()
     s.top_right.off()
-    s.center.off()
+    s.center_seg.off()
     s.bottom_left.off()
     s.bottom_right.off()
-    s.bottom.off()
+    s.bottom_seg.off()
     s.seperator.off()
 
     time.sleep(.5)
@@ -35,27 +35,31 @@ def test_all_segments():
     time.sleep(.5)
     s.top_right.on()
     time.sleep(.5)
-    s.center.on()
+    s.center_seg.on()
     time.sleep(.5)
     s.bottom_left.on()
     time.sleep(.5)
     s.bottom_right.on()
     time.sleep(.5)
-    s.bottom.on()
+    s.bottom_seg.on()
     time.sleep(.5)
     s.seperator.on()
     time.sleep(.5)
 
-def test():
+def test_gpio_connections():
+    for i in range(4):
+        print("Testing panel ", i)
+        test_on(i+1)
+        test_all_segments()
 
+
+def test_number_display():
     while True:
-        for i in range(4):
-            print("Testing panel ", i)
-            test_on(i+1)
-            test_all_segments()
-
-    
+        for i in range(10):
+            s.render(i)
+            time.sleep(.5)
 
 
 if __name__ == '__main__':
-    test()
+    # test_gpio_connections()
+    test_number_display()
