@@ -55,6 +55,7 @@ class Buttons:
 
 
     def notify(self, alarm):
+        print("mode is alarm now")
         self.mode = "alarm"
         self.screen.set_mode("alarm", self.alarm_puzzle)
 
