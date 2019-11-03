@@ -60,7 +60,7 @@ numbers = [zero, one, two, three, four, five, six, seven, eight, nine]
 def render(number):
     newState = numbers[number]
 
-    for i in len(gpio_order):
+    for i in range(len(gpio_order)):
         if status[i] != newState[i]:
             status[i] = not status[i]
             gpio_order[i].toggle()
