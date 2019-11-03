@@ -75,9 +75,9 @@ class SevenSegDrive:
     def set_cur_digit_output(self, new_digit):
         if self.cur_digit != new_digit:
             self.digit_status[self.cur_digit] = False
-            self.digits[self.cur_digit].off()
+            self.digits[self.cur_digit].on()
             self.digit_status[new_digit] = True
-            self.digits[new_digit].on()
+            self.digits[new_digit].off()
             self.cur_digit = new_digit
 
 
