@@ -76,7 +76,7 @@ class Buttons:
 
             if self.mode == "alarm":
                 print("In alamr")
-                if self.sound.off:
+                if self.sound.sound is True:
                     self.sound.start()
 
                 self.screen.set_mode("alarm", alarm_puzzle)
@@ -110,11 +110,11 @@ class Buttons:
                 if not (self.button1.is_pressed and self.button2.is_pressed):
                     if self.button1.is_pressed:
                         self.mode = 'change_time'
-                        print("Button 1")
+                        print("Button 1 view mode")
 
                     if self.button2.is_pressed:
                         self.mode = 'change_alarm'
-                        print("Button 2")
+                        print("Button 2 view mode")
 
 
 
