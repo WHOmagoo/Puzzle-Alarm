@@ -54,6 +54,7 @@ class Buttons:
 
     def notify(self, alarm):
         self.mode = "alarm"
+        self.screen.mode = "alarm"
 
 
     def poll_buttons(self):
