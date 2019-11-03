@@ -130,6 +130,7 @@ class SevenSegDrive:
                 time.sleep(.0002)
 
         elif self.mode == "alarm":
+            print("In alarm", self.alarm.get_nums())
             for i in [0,1,2,3]:
                 if i == 0 and self.alarm.get_nums()[i] == 0:
                     continue
