@@ -41,11 +41,8 @@ class alarm_puzzle:
 
         return indexes.pop()
 
-
-
     def is_correct(self, button_pushed):
         return self.get_nth_lowest_index(self.correct + 1) == button_pushed
-
 
     def input(self, button_pushed):
         correct = self.is_correct(button_pushed)
@@ -58,15 +55,15 @@ class alarm_puzzle:
             if self.correct >= 4:
                 self.solved = True
 
-    def push_button(self, button_number):
-
-        i = button_number
-        if self.is_correct(button_number):
-            self.correct += 1
-        else:
-            self.correct = 0
-            self.generate_puzzle()
-
-        self.solved = self.correct == 4
-
-        return self.solved
+    # def push_button(self, button_number):
+    #
+    #     i = button_number
+    #     if self.is_correct(button_number):
+    #         self.correct += 1
+    #     else:
+    #         self.correct = 0
+    #         self.generate_puzzle()
+    #
+    #     self.solved = self.correct == 4
+    #
+    #     return self.solved
