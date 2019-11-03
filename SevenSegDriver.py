@@ -49,7 +49,7 @@ class SevenSegDrive:
 
     status = [False,False,False,False,False,False,False,False]
 
-    digit_status = [True, True, True, True]
+    digit_status = [False, True, True, True]
     digits = [first_activator, second_activator, third_activator, fourth_activator]
 
     zero = [True, True, True, False, True, True, True, False]
