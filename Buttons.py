@@ -4,7 +4,7 @@ import SevenSegDriver
 import Time
 import TimeToArray
 import Alarm
-import alarm_puzzle
+import AlarmPuzzle
 import datetime
 import AlarmActions
 from threading import Thread
@@ -51,7 +51,7 @@ class Buttons:
         self.alarm = Alarm.Alarm(alarm_time)
         self.alarm.willRing = True
 
-        self.alarm_puzzle = alarm_puzzle.alarm_puzzle()
+        self.alarm_puzzle = AlarmPuzzle.alarm_puzzle()
 
         self.alarm.subscribe(self)
 
@@ -78,7 +78,7 @@ class Buttons:
                 if self.sound.sound is True:
                     self.sound.start()
 
-                self.screen.set_mode("alarm", alarm_puzzle)
+                # self.screen.set_mode("alarm", self.alarm_puzzle)
 
                 if self.button1.is_pressed and self.prev_pushed != 1:
                     self.alarm_puzzle.push_button(1)

@@ -6,7 +6,7 @@ import AlarmActions
 import datetime
 
 import TimeToArray
-import alarm_puzzle
+import AlarmPuzzle
 import SevenSegDriver
 
 import Buttons
