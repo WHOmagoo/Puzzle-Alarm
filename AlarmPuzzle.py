@@ -51,6 +51,7 @@ class alarm_puzzle:
             print(button_pushed, " was wrong should have been ", self.get_nth_lowest_index(self.correct + 1))
             self.generate_puzzle()
         else:
+            print(button_pushed, " was correct!")
             self.correct += 1
             if self.correct >= 4:
                 self.solved = True
