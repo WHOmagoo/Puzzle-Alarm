@@ -142,7 +142,7 @@ class SevenSegDrive:
                 time.sleep(.0002)
 
         else:
-            print(self.mode)
+            print("mode is", self.mode, "!")
 
 
     def notify(self, sender):
