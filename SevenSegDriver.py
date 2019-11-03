@@ -52,7 +52,7 @@ four = [False, True, True, True, False, True, False, False]
 five = [True, True, False, True, False, True, True, False]
 six = [False, True, False, True, True, True, True, False]
 seven = [True, False, True, False, False, True, False, False]
-eight = [True, True, True, True, True, True, True, True]
+eight = [True, True, True, True, True, True, True, False]
 nine = [True, True, True, True, False, True, False, False]
 
 numbers = [zero, one, two, three, four, five, six, seven, eight, nine]
