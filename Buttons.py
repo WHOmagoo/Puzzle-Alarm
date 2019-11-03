@@ -58,8 +58,8 @@ class Buttons:
 
         self.mode = "view"
 
-        # t = Thread(target=self.poll_buttons())
-        # t.start()
+        t = Thread(target=self.poll_buttons())
+        t.start()
 
 
     def notify(self, alarm):
