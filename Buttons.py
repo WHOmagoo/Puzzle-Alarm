@@ -69,7 +69,7 @@ class Buttons:
 
 
     def poll_buttons(self):
-        if self.mode is "alarm":
+        if self.mode == "alarm":
 
             print("In alamr")
             if self.sound.off:
