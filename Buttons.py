@@ -66,7 +66,7 @@ class Buttons:
         pass
         # print("mode is alarm now")
         # self.mode = "alarm"
-        # self.screen.set_mode("alarm", self.alarm_puzzle)
+        self.screen.set_mode("alarm", self.alarm_puzzle)
 
 
     def poll_buttons(self):
@@ -107,9 +107,11 @@ class Buttons:
             if not (self.button1.is_pressed and self.button2.is_pressed):
                 if self.button1.is_pressed:
                     self.mode = 'change_time'
+                    print("Button 1")
 
                 if self.button2.is_pressed:
                     self.mode = 'change_alarm'
+                    print("Button 2")
 
 
 
