@@ -1,7 +1,9 @@
 # 172.23.20.210
 # from gpiozero.pins.rpigpio import RPiGPIOFactory
 from gpiozero import LED
+from threading import Thread
 import time
+import TimeToArray
 
 # factory = Device.pin_factory()
 class SevenSegDrive:
@@ -69,6 +71,14 @@ class SevenSegDrive:
 
     cur_digit = 0
 
+    thread = None
+
+    def __init__(self, time):
+        self.set_display(time)
+        self.thread = Thread(target=self.render_forever)
+        self.thread.start()
+
+
     def set_display(self, new_display):
         self.display = new_display
 
@@ -89,8 +99,15 @@ class SevenSegDrive:
         self.status = [False] * 8
 
 
+    def render_forever(self):
+        while True:
+            self.render_display()
+
     def render_display(self):
         for i in range(4):
+            if i == 0 and self.display[i] == 0:
+                continue
+
             self.set_cur_digit_output(i)
             self.render_single_number(self.display[i])
             time.sleep(.0001)
@@ -98,6 +115,9 @@ class SevenSegDrive:
             time.sleep(.0004)
 
 
+    def notify(self, sender):
+        newTime = TimeToArray.time_to_array(sender.get_time())
+        self.set_display(self, newTime)
 
     def render_single_number(self, number):
         newState = self.numbers[number]
