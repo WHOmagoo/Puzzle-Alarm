@@ -7,6 +7,7 @@ import Alarm
 import alarm_puzzle
 import datetime
 import AlarmActions
+from threading import Thread
 from Buzzer import Buzzer
 
 
@@ -57,6 +58,9 @@ class Buttons:
 
         self.mode = "view"
 
+        t = Thread(target=self.poll_buttons())
+        t.start()
+
 
     def notify(self, alarm):
         print("mode is alarm now")
@@ -66,6 +70,8 @@ class Buttons:
 
     def poll_buttons(self):
         if self.mode is "alarm":
+
+            print("In alamr")
             if self.sound.off:
                 self.sound.start()
 
@@ -92,17 +98,17 @@ class Buttons:
 
             if self.alarm_puzzle.is_solved():
                 self.mode = "view"
-                self.screen.mode("view")
+                self.screen.mode = "view"
 
 
         if self.mode is "view":
             self.sound.stop()
             if not (self.button1.is_pressed and self.button2.is_pressed):
                 if self.button1.is_pressed:
-                    self.mode = "change_time"
+                    self.mode = 'change_time'
 
                 if self.button2.is_pressed:
-                    self.mode = "change_alarm"
+                    self.mode = 'change_alarm'
 
 
 

@@ -129,7 +129,7 @@ class SevenSegDrive:
                 self.off()
                 time.sleep(.0002)
 
-        elif self.mode[0] == "alarm":
+        elif self.mode == "alarm":
             for i in [0,1,2,3]:
                 self.set_cur_digit_output(i)
                 self.render_single_number(self.alarm.get_nums()[i])
