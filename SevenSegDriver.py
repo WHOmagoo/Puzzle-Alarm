@@ -81,12 +81,11 @@ class SevenSegDrive:
 
 
     def off(self):
-        global status
         for index, value in enumerate(status):
             if value is True:
                 self.gpio_order[index].off()
 
-        status = [False] * 8
+        self.status = [False] * 8
 
 
     def render_display(self):
@@ -103,7 +102,7 @@ class SevenSegDrive:
         newState = self.numbers[number]
 
         for i in range(len(self.gpio_order)):
-            if status[i] != newState[i]:
-                status[i] = not status[i]
+            if self.status[i] != newState[i]:
+                self.status[i] = not self.status[i]
                 self.gpio_order[i].toggle()
 
