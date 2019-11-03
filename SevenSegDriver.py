@@ -141,6 +141,9 @@ class SevenSegDrive:
                 self.off()
                 time.sleep(.0002)
 
+        else:
+            print(self.mode)
+
 
     def notify(self, sender):
         newTime = TimeToArray.time_to_array(sender.get_time().time())
