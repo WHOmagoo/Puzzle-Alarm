@@ -1,7 +1,7 @@
 # 172.23.20.210
 # from gpiozero.pins.rpigpio import RPiGPIOFactory
 from gpiozero import LED
-import Time
+import time
 
 # factory = Device.pin_factory()
 class SevenSegDrive:
@@ -81,7 +81,7 @@ class SevenSegDrive:
 
 
     def off(self):
-        for index, value in enumerate(status):
+        for index, value in enumerate(self.status):
             if value is True:
                 self.gpio_order[index].off()
 
@@ -92,9 +92,9 @@ class SevenSegDrive:
         for i in range(4):
             self.set_cur_digit_output(i)
             self.render_single_number(self.display[i])
-            Time.sleep(.008)
+            time.sleep(.008)
             self.off()
-            Time.sleep(.008)
+            time.sleep(.008)
 
 
 
