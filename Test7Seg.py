@@ -70,6 +70,7 @@ def test_number_display(s):
 
 if __name__ == '__main__':
     s = SevenSegDriver.SevenSegDrive()
+    s.set_display([1,2,4,8])
     # test_gpio_connections()
-    test_number_display(s)
-    # test_panel_render(s)
+    # test_number_display(s)
+    test_panel_render(s)
