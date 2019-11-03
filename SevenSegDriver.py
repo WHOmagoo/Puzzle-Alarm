@@ -112,13 +112,13 @@ class SevenSegDrive:
             self.render_display()
 
     def render_display(self):
-        for i in range(4):
+        for i in [0,3,2,4]:
             if i == 0 and self.display[i] == 0:
                 continue
 
             self.set_cur_digit_output(i)
             self.render_single_number(self.display[i])
-            time.sleep(.0005)
+            time.sleep(.001)
             self.off()
             # time.sleep(.0001)
 
@@ -129,6 +129,8 @@ class SevenSegDrive:
 
     def render_single_number(self, number):
         newState = self.numbers[number]
+
+
 
         for i in range(len(self.gpio_order)):
             if self.status[i] != newState[i]:
