@@ -53,7 +53,6 @@ def test_gpio_connections(s):
         test_all_segments(s)
 
 def test_panel_render(s):
-    s.set_display([1,4,5,7])
     while True:
         s.render_display()
 
