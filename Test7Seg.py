@@ -60,17 +60,16 @@ def test_panel_render(s):
 
 
 def test_number_display(s):
-    s.first_activator.on()
-    s.second_activator.on()
-    s.third_activator.on()
     while True:
-        for i in range(10):
-            s.render_single_number(i)
-            time.sleep(.75)
+        for j in range(4):
+            s.set_cur_digit_output(j)
+            for i in range(10):
+                s.render_single_number(i)
+                time.sleep(.75)
 
 
 if __name__ == '__main__':
     # test_gpio_connections()
-    # test_number_display()
-    s = SevenSegDriver.SevenSegDrive()
-    test_panel_render(s)
+    test_number_display()
+    # s = SevenSegDriver.SevenSegDrive()
+    # test_panel_render(s)
