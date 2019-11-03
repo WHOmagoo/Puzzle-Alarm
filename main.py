@@ -3,11 +3,31 @@ import alarm_puzzle
 
 if __name__ == '__main__':
     ap = alarm_puzzle.alarm_puzzle()
-    ap.push_button(4)
-    ap.push_button(1)
-    ap.push_button(2)
-    ap.push_button(3)
+    # ap.push_button(4)
+    # ap.push_button(1)
+    # ap.push_button(2)
+    # ap.push_button(3)
 
+    arr = [5, 2, 9, 2]
+    n = 4
+    Ans = ap.largest(n)
+    info = 1
+    print("Largest in given array is", Ans)
+    n = 3
+
+    Ans = ap.largest(n)
+    info = 2
+    print("second Largest in given array is", Ans)
+    n = 2
+
+    Ans = ap.largest(n)
+    info = 3
+    print("third Largest in given array is", Ans)
+
+    n = 1
+    Ans = ap.largest(n)
+    info = 4
+    print("fourth Largest in given array is", Ans)
     print(ap.solved)
 
 

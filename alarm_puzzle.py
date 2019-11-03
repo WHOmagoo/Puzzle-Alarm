@@ -1,4 +1,5 @@
-
+import random
+import math
 class alarm_puzzle:
     display = []
     correct = 0
@@ -11,33 +12,97 @@ class alarm_puzzle:
         return self.solved
 
     def generate_puzzle(self):
-        self.display = [4,7,9,8]
-        #print[self.display]
+        for i in range (4):
+            self.display = [4,3,2,1]
+            # col_num = random.random()
+            # col_num = col_num * 9
+            # self.display[i] = math.floor(col_num)
+
 
     def is_correct(self, button_number):
+        i = button_number + 1
+        n = self.correct
 
-        return False
+        return self.largest(self.correct) == self.correct[button_number]
 
-    def input(self):
-        value = input("Enter botton:")
-        print(value)
 
-    def push_button(self, button_number):
+    #def find_nth_lowest_number(self, n):
+    #   self.display = [4, 7, 9, 8]
 
-        i = button_number
+    def largest(self, n):
 
-        if 0 < i < 5:
+        # Initialize maximum element
+
+        # Traverse array elements from second
+        # and compare every element with
+        # current max
+        order = []
+        order_index = []
+        display_copy = self.display
+        for i in range(5 - n):
+            max = -1
+            max_index = -1
+            for j in range(4):
+                if j in order_index:
+                    continue
+                else:
+                    if display_copy[j] > max:
+                        max = display_copy[j]
+                        max_index = j
+
+            order.append(max)
+            order_index.append(max_index)
+
+        return order.pop()
+"""
+    # Driver Code
+         arr = [4,7,9,8]
+         n = len(arr)
+         Ans = largest(arr, n)
+         info = 1
+         print("Largest in given array is", Ans)
+
+
+         n = len(arr)
+         Ans = largest(arr, n)
+         info = 2
+         print("second Largest in given array is", Ans)
+
+         n = len(arr)
+         Ans = largest(arr, n)
+         info = 3
+         print("third Largest in given array is", Ans)
+
+         arr = [4]
+         n = len(arr)
+         Ans = largest(arr, n)
+         info = 4
+         print("third Largest in given array is", Ans)
+"""
+
+
+def input(self):
+
+    value = input("Enter botton:")
+
+    print(value)
+
+def push_button(self, button_number):
+
+    i = button_number
+
+    if 0 < i < 5:
         #if self.is_correct(button_number):
-            self.correct += 1
-        else:
-            self.correct = 0
-        self.solved = self.correct == 4
+        self.correct += 1
+    else:
+        self.correct = 0
+    self.solved = self.correct == 4
 
-        return self.solved
+    return self.solved
 
 
 
-   
+
 
 """
 # code modified, tweaked and tailored from code by bertwert
