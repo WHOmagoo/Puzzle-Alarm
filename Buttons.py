@@ -36,17 +36,30 @@ class Buttons:
 
     alarm_puzzle = None
 
+    cur_time = None
+
     def __init__(self):
-        cur_time = Time.Time()
+        self.cur_time = Time.Time()
 
-        self.screen = SevenSegDriver.SevenSegDrive(TimeToArray.time_to_array(cur_time.get_time()))
+        self.screen = SevenSegDriver.SevenSegDrive(TimeToArray.time_to_array(self.cur_time.get_time()))
 
-        cur_time.subscribe_to_time_change(self.screen)
+        self.cur_time.subscribe_to_time_change(self.screen)
 
-        cur_time_e = cur_time.get_time().time()
+        self.make_alarm()
+
+        self.mode = "view"
+
+        t = Thread(target=self.poll_buttons())
+        t.start()
+
+    def make_alarm(self):
+        cur_time_e = self.cur_time.get_time().time()
         alarm_time = datetime.time(cur_time_e.hour, (cur_time_e.minute + 1) % 60, 0)
 
-        print("Alarm for ", alarm_time)
+        print("New Alarm for ", alarm_time)
+
+        if self.alarm is not None:
+            self.alarm.unsubscribe(self)
 
         self.alarm = Alarm.Alarm(alarm_time)
         self.alarm.willRing = True
@@ -55,13 +68,7 @@ class Buttons:
 
         self.alarm.subscribe(self)
 
-        cur_time.subscribe_to_time_change(self.alarm)
-
-        self.mode = "view"
-
-        t = Thread(target=self.poll_buttons())
-        t.start()
-
+        self.cur_time.subscribe_to_time_change(self.alarm)
 
     def notify(self, alarm):
         pass
@@ -112,11 +119,12 @@ class Buttons:
                 self.sound.stop()
                 if not (self.button1.is_pressed and self.button2.is_pressed):
                     if self.button1.is_pressed:
-                        self.mode = 'change_time'
+                        # self.mode = 'change_time'
+                        self.make_alarm()
                         print("Button 1 view mode")
 
                     if self.button2.is_pressed:
-                        self.mode = 'change_alarm'
+                        # self.mode = 'change_alarm'
                         print("Button 2 view mode")
 
 
