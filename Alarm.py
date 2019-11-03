@@ -2,12 +2,14 @@ class Alarm:
     alarm_time = None
     subscribers = []
     disarmed = False
+    willRing = False
 
-
-
-    def __init__(self, date_time_alarm):
+    def __init__(self, date_time_alarm, willRing=False):
         self.alarm_time = date_time_alarm
+        self.willRing = willRing
 
+    def set_will_ring(self, will_ring):
+        self.willRing = will_ring
 
     def subscribe(self, observer):
         self.subscribers.append(observer)
@@ -22,6 +24,6 @@ class Alarm:
         self.disarmed = disarmed
 
     def notify(self, time):
-        if time.time_is(self.alarm_time):
+        if self.willRing and time.time_is(self.alarm_time):
             for observer in self.subscribers:
                 observer.notify(self)

@@ -11,7 +11,7 @@ def generate_and_solve_puzzle():
 
 class AlarmActions:
     def notify(self, alarm):
+        puzzle = alarm_puzzle.a
         generate_and_solve_puzzle()
-        alarm.set_disarmed(True)
 
 

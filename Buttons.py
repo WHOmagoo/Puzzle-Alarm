@@ -1,13 +1,85 @@
 from gpiozero import Button
 
-# button 4
-button4 = Button(14)
+import SevenSegDriver
+import Time
+import TimeToArray
+import Alarm
+import alarm_puzzle
 
-# button 3
-button3 = Button(15)
 
-# button 2
-button2 = Button(18)
+class Buttons:
+    # button 4
+    button4 = Button(14)
 
-# button 1
-button1 = Button(23)
+    # button 3
+    button3 = Button(15)
+
+    # button 2
+    button2 = Button(18)
+
+    # button 1
+    button1 = Button(23)
+
+    mode = "view"
+
+    alarm = None
+
+    prev_pushed = -1
+    screen = None
+
+    def __init__(self):
+        cur_time = Time.Time()
+
+        self.screen = SevenSegDriver.SevenSegDrive(TimeToArray.time_to_array(cur_time.get_time()))
+
+        cur_time.subscribe_to_time_change(self.screen)
+        cur_time.get_time().time().minute += 1
+
+        self.alarm = Alarm.Alarm(cur_time)
+        self.alarm_puzzle = alarm_puzzle.alarm_puzzle()
+
+        self.alarm.subscribe(alarm_puzzle)
+
+        self.mode = "view"
+
+
+    def notify(self, alarm):
+        self.mode = "alarm"
+
+
+    def poll_buttons(self):
+        if self.mode is "alarm":
+            self.screen.mode("alarm", alarm_puzzle)
+
+            if self.button1.is_active and self.prev_pushed != 1:
+                self.alarm_puzzle.push_button(1)
+                self.prev_pushed = 1
+            elif self.button2.is_active and self.prev_pushed != 2:
+                self.alarm_puzzle.push_button(2)
+                self.prev_pushed = 2
+            elif self.button3.is_active and self.prev_pushed != 3:
+                self.alarm_puzzle.push_button(3)
+                self.prev_pushed = 3
+            elif self.button4.is_active and self.prev_pushed != 4:
+                self.alarm_puzzle.push_button(4)
+                self.prev_pushed = 4
+            else:
+                self.prev_pushed = -1
+
+            if self.alarm_puzzle.is_solved():
+                self.mode = "view"
+                self.screen.mode("view")
+
+
+        if self.mode is "view":
+            if not (self.button1.is_active and self.button2.is_active):
+                if self.button1.is_active:
+                    self.mode = "change_time"
+
+                if self.button2.is_active:
+                    self.mode = "change_alarm"
+
+
+
+
+

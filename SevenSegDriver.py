@@ -73,10 +73,13 @@ class SevenSegDrive:
 
     thread = None
 
+    mode = "view"
+
     def __init__(self, time):
         self.set_display(time)
         self.thread = Thread(target=self.render_forever)
         self.thread.start()
+        self.mode = "view"
 
 
     def set_display(self, new_display):
@@ -112,15 +115,28 @@ class SevenSegDrive:
             self.render_display()
 
     def render_display(self):
-        for i in [0,1,2,3]:
-            if i == 0 and self.display[i] == 0:
-                continue
 
-            self.set_cur_digit_output(i)
-            self.render_single_number(self.display[i])
-            time.sleep(.00004)
-            self.off()
-            time.sleep(.0002)
+        if self.mode == "view":
+            for i in [0,1,2,3]:
+                if i == 0 and self.display[i] == 0:
+                    continue
+
+                self.set_cur_digit_output(i)
+                self.render_single_number(self.display[i])
+                time.sleep(.00004)
+                self.off()
+                time.sleep(.0002)
+
+        elif self.mode == "alarm":
+            for i in [0,1,2,3]:
+                if i == 0 and self.alarm.get_nums()[i] == 0:
+                    continue
+
+                self.set_cur_digit_output(i)
+                self.render_single_number(self.alarm.get_nums()[i])
+                time.sleep(.00004)
+                self.off()
+                time.sleep(.0002)
 
 
     def notify(self, sender):
@@ -142,3 +158,7 @@ class SevenSegDrive:
         else:
             self.disable_seperator()
 
+
+    def mode(self, mode, alarm_puzzle):
+        self.mode = mode,
+        self.alarm = alarm_puzzle

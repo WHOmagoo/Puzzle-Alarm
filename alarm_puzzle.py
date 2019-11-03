@@ -63,13 +63,18 @@ class alarm_puzzle:
         i = button_number
 
         if 0 < i < 5:
-        #if self.is_correct(button_number):
-            self.correct += 1
+            if self.is_correct(button_number):
+                self.correct += 1
         else:
             self.correct = 0
+            self.generate_puzzle()
+
         self.solved = self.correct == 4
 
         return self.solved
+
+    def get_nums(self):
+        return self.display
 
 
 
