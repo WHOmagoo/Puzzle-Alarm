@@ -96,16 +96,9 @@ class SevenSegDrive:
             self.digits[new_digit].off()
             self.cur_digit = new_digit
 
-        if new_digit is 1:
-            self.enable_seperator()
-        elif new_digit is 2:
-            self.disable_seperator()
-
-
 
     def off(self):
         for index, value in enumerate(self.status):
-            print(index)
             if value is True:
                 self.gpio_order[index].off()
 
@@ -139,4 +132,9 @@ class SevenSegDrive:
             if self.status[i] != newState[i]:
                 self.status[i] = not self.status[i]
                 self.gpio_order[i].toggle()
+
+        if self.cur_digit == 1:
+            self.enable_seperator()
+        else:
+            self.disable_seperator()
 
