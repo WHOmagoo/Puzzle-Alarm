@@ -12,10 +12,12 @@ class Buzzer:
         self.t = Thread(target=self.run)
 
     def run(self):
+        print("Starting sound")
         self.speaker.on()
         while self.sound:
             self.speaker.toggle()
             time.sleep(1/660)
+        print("Stopping sound")
 
 
     def start(self):
