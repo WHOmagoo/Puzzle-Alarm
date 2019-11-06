@@ -82,7 +82,7 @@ class Buttons:
             time.sleep(.1)
 
             if self.mode == "alarm":
-                if self.sound.sound is False:
+                if self.sound.sound is True and self.sound.buzzing is False:
                     self.sound.start()
 
                 # self.screen.set_mode("alarm", self.alarm_puzzle)
