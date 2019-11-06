@@ -20,6 +20,7 @@ class Buzzer:
             self.speaker.toggle()
             time.sleep(1/660)
         print("Stopping sound")
+        self.speaker.off()
         self.buzzing = False
 
     def start(self):
